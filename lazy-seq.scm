@@ -98,3 +98,11 @@
     (if (= n 0)
       coll
       (drop (- n 1) (lazy-cdr coll)))))
+
+;; iterate
+(define iterate
+  (lambda (f v)
+    (let ((vp (f v)))
+      (lazy-cons
+        vp
+        (iterate f vp)))))
